@@ -1,0 +1,45 @@
+{
+	"oscilloscope": {
+		"coupling": {
+			"ac": "Пер",
+			"dc": "Пост"
+		},
+		"mode": {
+			"goniometer": "Гониометр",
+			"triggered": "Триггер",
+			"xy": "XY"
+		},
+		"oversampler": {
+			"2x": "2X",
+			"3x": "3X",
+			"4x": "4X",
+			"6x": "6X",
+			"8x": "8X",
+			"none": "Нет"
+		},
+		"sweeptype": {
+			"sawtooth": "Пила",
+			"triangular": "Треугольный",
+			"sine": "Синусоидальный"
+		},
+		"trigger": {
+			"input": {
+				"ext": "ВНЕШ",
+				"y": "Y"
+			},
+			"mode": {
+				"manual": "Ручной",
+				"repeat": "Повтор",
+				"single": "Одиночный"
+			},
+			"type": {
+				"advanced_falling_edge": "Спуск (улучшенный)",
+				"advanced_rising_edge": "Подъём (улучшенный)",
+				"none": "Нет",
+				"simple_falling_edge": "Спуск (простой)",
+				"simple_rising_edge": "Подъём (простой)"
+			}
+		}
+	}
+}
+
