@@ -21,7 +21,7 @@
 # Package version
 ARTIFACT_ID                 = LSP_PLUGINS_OSCILLOSCOPE
 ARTIFACT_NAME               = lsp-plugins-oscilloscope
-ARTIFACT_DESC               = Oscilloscope Plugin Series
+ARTIFACT_DESC               = Oscilloscope plugin series
 ARTIFACT_HEADERS            = lsp-plug.in
 ARTIFACT_EXPORT_ALL         = 1
 ARTIFACT_VERSION            = 1.0.1-devel
