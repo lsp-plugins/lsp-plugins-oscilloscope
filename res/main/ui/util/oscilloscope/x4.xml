@@ -3,11 +3,13 @@
 		<vbox spacing="4" expand="true">
 			<!-- Fast Control -->
 			<hbox>
-				<button id="freeze" led="true" text="actions.freeze" font.size="10" color="cyan" height="24"/>
-				<button id="frz_1" led="true" text="labels.chan.Ch_1" font.size="10" color="cyan" height="24"/>
-				<button id="frz_2" led="true" text="labels.chan.Ch_2" font.size="10" color="cyan" height="24"/>
-				<button id="frz_3" led="true" text="labels.chan.Ch_3" font.size="10" color="cyan" height="24"/>
-				<button id="frz_4" led="true" text="labels.chan.Ch_4" font.size="10" color="cyan" height="24"/>
+				<ui:with led="true" font.size="10" color="cyan" height="24">
+					<button id="freeze" text="actions.freeze" />
+					<button id="frz_1" text="labels.chan.Ch_1" />
+					<button id="frz_2" text="labels.chan.Ch_2" />
+					<button id="frz_3" text="labels.chan.Ch_3" />
+					<button id="frz_4" text="labels.chan.Ch_4" />
+				</ui:with>
 				
 				<void hexpand="true" />
 				
