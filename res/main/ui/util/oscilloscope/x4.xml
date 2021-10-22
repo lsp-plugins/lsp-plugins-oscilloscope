@@ -407,11 +407,11 @@
 				</align>
 					<combo id="trin" fill="false" bg.color="osc_bg_gray" width="76" pad.h="6"/>
 					<align halign="1">
-						<button id="trre" text="actions.run_stop" ui:inject="Button_gray" pad.r="6" hfill="false" width="76" height="22" bg.color="osc_bg_gray" editable=":trmo ilt 2" pointer="(:trmo ilt 2) ? 'hand' : 'arrow'" bright="(:trmo ilt 2) ? 1 : 0.75"/>
+						<button id="trre" text="actions.run_stop" ui:inject="Button_gray" pad.r="6" hfill="false" width="76" height="22" bg.color="osc_bg_gray" editable="(:trmo ilt 2) and (:scmo ieq 1))" pointer="((:trmo ilt 2) and (:scmo ieq 1)) ? 'hand' : 'arrow'" bright="((:trmo ilt 2) and (:scmo ieq 1)) ? 1 : 0.75"/>
 						</align>
 					<combo id="trin_${i}" fill="false" bg.color="${bgcol}" width="76" pad.h="6"/>
 					<align halign="1" >
-						<button id="trre_${i}" text="actions.run_stop" bg.color="${bgcol}" ui:inject="Button_${col}" pad.r="6" hfill="false" width="76" height="22" editable=":trmo_${i} ilt 2" pointer="(:trmo_${i} ilt 2) ? 'hand' : 'arrow'" bright="(:trmo_${i} ilt 2) ? 1 : 0.75"/>
+						<button id="trre_${i}" text="actions.run_stop" bg.color="${bgcol}" ui:inject="Button_${col}" pad.r="6" hfill="false" width="76" height="22" editable="(:trmo_${i} ilt 2) and (:scmo_${i} ieq 1)" pointer="((:trmo_${i} ilt 2) and (:scmo_${i} ieq 1)) ? 'hand' : 'arrow'" bright="((:trmo_${i} ilt 2) and (:scmo_${i} ieq 1)) ? 1 : 0.75"/>
 						</align>
 
 				<!-- Row 19 -->
