@@ -33,9 +33,9 @@
 				"single": "Singolo"
 			},
 			"type": {
-				"advanced_falling_edge": "Advanzato Decrescente",
-				"advanced_rising_edge": "Advanzato Crescente",
-				"none": "None",
+				"advanced_falling_edge": "Avanzato Decrescente",
+				"advanced_rising_edge": "Avanzato Crescente",
+				"none": "Nessuno",
 				"simple_falling_edge": "Semplice Decrescente",
 				"simple_rising_edge": "Semplice Crescente"
 			}
