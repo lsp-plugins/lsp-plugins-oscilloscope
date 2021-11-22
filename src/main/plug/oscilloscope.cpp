@@ -175,9 +175,9 @@ namespace lsp
             }
         }
 
-        void oscilloscope::init(plug::IWrapper *wrapper)
+        void oscilloscope::init(plug::IWrapper *wrapper, plug::IPort **ports)
         {
-            plug::Module::init(wrapper);
+            plug::Module::init(wrapper, ports);
 
             vChannels = new channel_t[nChannels];
             if (vChannels == NULL)
@@ -339,42 +339,42 @@ namespace lsp
 
             for (size_t ch = 0; ch < nChannels; ++ch)
             {
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pIn_x = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pIn_x = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pIn_y = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pIn_y = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pIn_ext = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pIn_ext = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pOut_x = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pOut_x = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pOut_y = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pOut_y = ports[port_id++];
             }
 
             // Common settings
             lsp_trace("Binding common ports");
 
-            TRACE_PORT(vPorts[port_id]);
-            pStrobeHistSize = vPorts[port_id++];
+            TRACE_PORT(ports[port_id]);
+            pStrobeHistSize = ports[port_id++];
 
-            TRACE_PORT(vPorts[port_id]);
-            pXYRecordTime   = vPorts[port_id++];
+            TRACE_PORT(ports[port_id]);
+            pXYRecordTime   = ports[port_id++];
 
-            TRACE_PORT(vPorts[port_id]);
+            TRACE_PORT(ports[port_id]);
             ++port_id;      // Skip 'maxdots' parameter
 
-            TRACE_PORT(vPorts[port_id]);
-            pFreeze         = vPorts[port_id++];
+            TRACE_PORT(ports[port_id]);
+            pFreeze         = ports[port_id++];
 
             // Channel selector only exists on multi-channel versions. Skip for 1X plugin.
             if (nChannels > 1)
             {
-                TRACE_PORT(vPorts[port_id]);
-                pChannelSelector = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pChannelSelector = ports[port_id++];
             }
 
             // Global ports only exists on multi-channel versions. Skip for 1X plugin.
@@ -383,59 +383,59 @@ namespace lsp
             {
                 lsp_trace("Binding global control ports");
 
-                TRACE_PORT(vPorts[port_id]);
-                pOvsMode = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pOvsMode = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pScpMode = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pScpMode = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pCoupling_x = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pCoupling_x = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pCoupling_y = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pCoupling_y = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pCoupling_ext = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pCoupling_ext = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pSweepType = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pSweepType = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pTimeDiv = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pTimeDiv = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pHorDiv = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pHorDiv = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pHorPos = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pHorPos = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pVerDiv = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pVerDiv = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pVerPos = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pVerPos = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pTrgHys = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pTrgHys = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pTrgLev = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pTrgLev = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pTrgHold = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pTrgHold = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pTrgMode = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pTrgMode = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pTrgType = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pTrgType = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pTrgInput = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pTrgInput = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                pTrgReset = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                pTrgReset = ports[port_id++];
             }
 
             lsp_trace("Binding channel control ports");
@@ -443,59 +443,59 @@ namespace lsp
 
             for (size_t ch = 0; ch < nChannels; ++ch)
             {
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pOvsMode = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pOvsMode = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pScpMode = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pScpMode = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pCoupling_x = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pCoupling_x = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pCoupling_y = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pCoupling_y = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pCoupling_ext = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pCoupling_ext = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pSweepType = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pSweepType = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pTimeDiv = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pTimeDiv = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pHorDiv = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pHorDiv = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pHorPos = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pHorPos = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pVerDiv = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pVerDiv = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pVerPos = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pVerPos = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pTrgHys = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pTrgHys = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pTrgLev = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pTrgLev = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pTrgHold = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pTrgHold = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pTrgMode = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pTrgMode = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pTrgType = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pTrgType = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pTrgInput = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pTrgInput = ports[port_id++];
 
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pTrgReset = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pTrgReset = ports[port_id++];
             }
 
             lsp_trace("Binding channel switches ports");
@@ -504,17 +504,17 @@ namespace lsp
             {
                 for (size_t ch = 0; ch < nChannels; ++ch)
                 {
-                    TRACE_PORT(vPorts[port_id]);
-                    vChannels[ch].pGlobalSwitch = vPorts[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    vChannels[ch].pGlobalSwitch = ports[port_id++];
 
-                    TRACE_PORT(vPorts[port_id]);
-                    vChannels[ch].pFreezeSwitch = vPorts[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    vChannels[ch].pFreezeSwitch = ports[port_id++];
 
-                    TRACE_PORT(vPorts[port_id]);
-                    vChannels[ch].pSoloSwitch = vPorts[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    vChannels[ch].pSoloSwitch = ports[port_id++];
 
-                    TRACE_PORT(vPorts[port_id]);
-                    vChannels[ch].pMuteSwitch = vPorts[port_id++];
+                    TRACE_PORT(ports[port_id]);
+                    vChannels[ch].pMuteSwitch = ports[port_id++];
                 }
             }
 
@@ -522,8 +522,8 @@ namespace lsp
 
             for (size_t ch = 0; ch < nChannels; ++ch)
             {
-                TRACE_PORT(vPorts[port_id]);
-                vChannels[ch].pStream = vPorts[port_id++];
+                TRACE_PORT(ports[port_id]);
+                vChannels[ch].pStream = ports[port_id++];
             }
         }
 
