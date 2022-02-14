@@ -1,0 +1,7 @@
+{
+	"oscilloscope": {
+		"name": "Oscilloscope",
+		"description": "This plugin implements a simple, but flexible, oscilloscope. Different operating\nmodes are provided. For better analysis of high frequencies, oversampling\noption is available. Additional control ports allow to set up advanced\nconfiguration and analysis."
+	}
+}
+

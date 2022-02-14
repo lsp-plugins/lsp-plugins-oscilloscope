@@ -234,6 +234,15 @@ namespace lsp
             PORTS_END
         };
 
+        const meta::bundle_t oscilloscope_bundle =
+        {
+            "oscilloscope",
+            "Oscilloscope",
+            B_UTILITIES,
+            "MCIpQebU5o4",
+            "This plugin implements a simple, but flexible, oscilloscope. Different operating\nmodes are provided. For better analysis of high frequencies, oversampling\noption is available. Additional control ports allow to set up advanced\nconfiguration and analysis."
+        };
+
         const meta::plugin_t oscilloscope_x1 =
         {
             "Oscilloscope x1",
@@ -252,7 +261,8 @@ namespace lsp
             oscilloscope_x1_ports,
             "util/oscilloscope/x1.xml",
             NULL,
-            NULL
+            NULL,
+            &oscilloscope_bundle
         };
 
         const meta::plugin_t oscilloscope_x2 =
@@ -273,7 +283,8 @@ namespace lsp
             oscilloscope_x2_ports,
             "util/oscilloscope/x2.xml",
             NULL,
-            NULL
+            NULL,
+            &oscilloscope_bundle
         };
 
         const meta::plugin_t oscilloscope_x4 =
@@ -294,7 +305,8 @@ namespace lsp
             oscilloscope_x4_ports,
             "util/oscilloscope/x4.xml",
             NULL,
-            NULL
+            NULL,
+            &oscilloscope_bundle
         };
     } // namespace meta
 } // namespace lsp
