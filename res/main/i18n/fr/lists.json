@@ -1,0 +1,44 @@
+{
+	"oscilloscope": {
+		"coupling": {
+			"ac": "AC",
+			"dc": "DC"
+		},
+		"mode": {
+			"goniometer": "Goniomètre",
+			"triggered": "Déclenché",
+			"xy": "XY"
+		},
+		"oversampler": {
+			"2x": "2X",
+			"3x": "3X",
+			"4x": "4X",
+			"6x": "6X",
+			"8x": "8X",
+			"none": "Aucun"
+		},
+		"sweeptype": {
+			"sawtooth": "Dent de scie",
+			"triangular": "Triangulaire",
+			"sine": "Sinusoïde"
+		},
+		"trigger": {
+			"input": {
+				"ext": "EXT",
+				"y": "Y"
+			},
+			"mode": {
+				"manual": "Manuel",
+				"repeat": "Répéter",
+				"single": "Simple"
+			},
+			"type": {
+				"advanced_falling_edge": "Chute avancée",
+				"advanced_rising_edge": "Montée avancée",
+				"none": "Aucun",
+				"simple_falling_edge": "Chute simple",
+				"simple_rising_edge": "Montée simple"
+			}
+		}
+	}
+}
