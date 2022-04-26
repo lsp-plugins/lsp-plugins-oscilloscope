@@ -1261,7 +1261,7 @@ namespace lsp
                 if ((c->vIn_x == NULL) || (c->vIn_y == NULL))
                     return;
 
-                if ((c->vIn_ext == NULL))
+                if (c->vIn_ext == NULL)
                     return;
 
                 c->nSamplesCounter = samples;
