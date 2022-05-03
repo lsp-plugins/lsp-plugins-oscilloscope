@@ -25,7 +25,7 @@
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MAJOR       1
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MINOR       0
-#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       1
+#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       2
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION  \
     LSP_MODULE_VERSION( \
@@ -240,7 +240,7 @@ namespace lsp
             "Oscilloscope",
             B_UTILITIES,
             "MCIpQebU5o4",
-            "This plugin implements a simple, but flexible, oscilloscope. Different operating\nmodes are provided. For better analysis of high frequencies, oversampling\noption is available. Additional control ports allow to set up advanced\nconfiguration and analysis."
+            "This plugin implements a simple, but flexible, oscilloscope. Different operating\nmodes are provided. For better analysis of high frequencies, oversampling\noption is available. Additional control ports allow one to set up advanced\nconfiguration and analysis."
         };
 
         const meta::plugin_t oscilloscope_x1 =
