@@ -1,0 +1,44 @@
+{
+	"oscilloscope": {
+		"coupling": {
+			"ac": "AC",
+			"dc": "DC"
+		},
+		"mode": {
+			"goniometer": "Goniometer",
+			"triggered": "Triggered",
+			"xy": "XY"
+		},
+		"oversampler": {
+			"2x": "2X",
+			"3x": "3X",
+			"4x": "4X",
+			"6x": "6X",
+			"8x": "8X",
+			"none": "None"
+		},
+		"sweeptype": {
+			"sawtooth": "Sawtooth",
+			"triangular": "Triangular",
+			"sine": "Sine"
+		},
+		"trigger": {
+			"input": {
+				"ext": "EXT",
+				"y": "Y"
+			},
+			"mode": {
+				"manual": "Manual",
+				"repeat": "Repeat",
+				"single": "Single"
+			},
+			"type": {
+				"advanced_falling_edge": "Advanced Falling",
+				"advanced_rising_edge": "Advanced Rising",
+				"none": "None",
+				"simple_falling_edge": "Simple Falling",
+				"simple_rising_edge": "Simple Rising"
+			}
+		}
+	}
+}
