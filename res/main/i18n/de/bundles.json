@@ -1,0 +1,7 @@
+{
+	"oscilloscope": {
+		"name": "Oszilloskop",
+		"description": "Dieses Plugin ist ein simples aber flexibles Oszilloskop. \nEs stellt verschiedene Arbeitsmodi zur Verfügung. Zur besseren Analyse \nvon hohen Frequenzen ist eine Oversampling-Funktion verügbar. \nZusätzliche Kontrollports erlaubt eine fortgeschrittene \nKonfiguration und Analyse."
+	}
+}
+
