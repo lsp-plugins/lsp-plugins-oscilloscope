@@ -826,6 +826,7 @@ namespace lsp
             c->sStateStage.fPV_pTimeDiv = meta::oscilloscope_metadata::TIME_DIVISION_DFL;
             c->nUpdate |= UPD_SWEEP_GENERATOR;
 
+            c->sStateStage.fPV_pHorDiv = meta::oscilloscope_metadata::HORIZONTAL_DIVISION_DFL;
             c->sStateStage.fPV_pHorPos = meta::oscilloscope_metadata::TIME_POSITION_DFL;
             c->nUpdate |= UPD_SWEEP_GENERATOR;
             c->nUpdate |= UPD_PRETRG_DELAY;
