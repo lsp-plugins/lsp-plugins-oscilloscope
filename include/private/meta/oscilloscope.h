@@ -32,60 +32,60 @@ namespace lsp
     {
         struct oscilloscope_metadata
         {
-            static const float HORIZONTAL_DIVISION_MAX      = 10.0f;
-            static const float HORIZONTAL_DIVISION_MIN      = 1.0e-3f;
-            static const float HORIZONTAL_DIVISION_DFL      = 0.5;
-            static const float HORIZONTAL_DIVISION_STEP     = 1e-3f;
+            static constexpr float HORIZONTAL_DIVISION_MAX      = 10.0f;
+            static constexpr float HORIZONTAL_DIVISION_MIN      = 1.0e-3f;
+            static constexpr float HORIZONTAL_DIVISION_DFL      = 0.5;
+            static constexpr float HORIZONTAL_DIVISION_STEP     = 1e-3f;
 
-            static const float TIME_DIVISION_MAX            = 50.0f;
-            static const float TIME_DIVISION_MIN            = 0.05f;
-            static const float TIME_DIVISION_DFL            = 1.0f;
-            static const float TIME_DIVISION_STEP           = 0.01f;
+            static constexpr float TIME_DIVISION_MAX            = 50.0f;
+            static constexpr float TIME_DIVISION_MIN            = 0.05f;
+            static constexpr float TIME_DIVISION_DFL            = 1.0f;
+            static constexpr float TIME_DIVISION_STEP           = 0.01f;
 
-            static const float TIME_POSITION_MAX            = 100.0f;
-            static const float TIME_POSITION_MIN            = -100.0f;
-            static const float TIME_POSITION_DFL            = 0.0f;
-            static const float TIME_POSITION_STEP           = 0.1f;
+            static constexpr float TIME_POSITION_MAX            = 100.0f;
+            static constexpr float TIME_POSITION_MIN            = -100.0f;
+            static constexpr float TIME_POSITION_DFL            = 0.0f;
+            static constexpr float TIME_POSITION_STEP           = 0.1f;
 
-            static const float VERTICAL_DIVISION_MAX        = 10.0f;
-            static const float VERTICAL_DIVISION_MIN        = 1.0e-3f;
-            static const float VERTICAL_DIVISION_DFL        = 0.5;
-            static const float VERTICAL_DIVISION_STEP       = 1e-3f;
+            static constexpr float VERTICAL_DIVISION_MAX        = 10.0f;
+            static constexpr float VERTICAL_DIVISION_MIN        = 1.0e-3f;
+            static constexpr float VERTICAL_DIVISION_DFL        = 0.5;
+            static constexpr float VERTICAL_DIVISION_STEP       = 1e-3f;
 
-            static const float VERTICAL_POSITION_MAX        = 100.0f;
-            static const float VERTICAL_POSITION_MIN        = -100.0f;
-            static const float VERTICAL_POSITION_DFL        = 0.0f;
-            static const float VERTICAL_POSITION_STEP       = 0.1f;
+            static constexpr float VERTICAL_POSITION_MAX        = 100.0f;
+            static constexpr float VERTICAL_POSITION_MIN        = -100.0f;
+            static constexpr float VERTICAL_POSITION_DFL        = 0.0f;
+            static constexpr float VERTICAL_POSITION_STEP       = 0.1f;
 
-            static const size_t STROBE_HISTORY_MAX          = 10;
-            static const size_t STROBE_HISTORY_MIN          = 0;
-            static const size_t STROBE_HISTORY_DFL          = 0;
-            static const size_t STROBE_HISTORY_STEP         = 1;
+            static constexpr size_t STROBE_HISTORY_MAX          = 10;
+            static constexpr size_t STROBE_HISTORY_MIN          = 0;
+            static constexpr size_t STROBE_HISTORY_DFL          = 0;
+            static constexpr size_t STROBE_HISTORY_STEP         = 1;
 
-            static const float XY_RECORD_TIME_MAX           = 50.0f;
-            static const float XY_RECORD_TIME_MIN           = 1.0f;
-            static const float XY_RECORD_TIME_DFL           = 10.0f;
-            static const float XY_RECORD_TIME_STEP          = 0.01f;
+            static constexpr float XY_RECORD_TIME_MAX           = 50.0f;
+            static constexpr float XY_RECORD_TIME_MIN           = 1.0f;
+            static constexpr float XY_RECORD_TIME_DFL           = 10.0f;
+            static constexpr float XY_RECORD_TIME_STEP          = 0.01f;
 
-            static const float MAXDOTS_MAX                  = 16384.0f;
-            static const float MAXDOTS_MIN                  = 512.0f;
-            static const float MAXDOTS_DFL                  = 8192.0f;
-            static const float MAXDOTS_STEP                 = 0.01f;
+            static constexpr float MAXDOTS_MAX                  = 16384.0f;
+            static constexpr float MAXDOTS_MIN                  = 512.0f;
+            static constexpr float MAXDOTS_DFL                  = 8192.0f;
+            static constexpr float MAXDOTS_STEP                 = 0.01f;
 
-            static const float TRIGGER_HYSTERESIS_MAX       = 50.0f;
-            static const float TRIGGER_HYSTERESIS_MIN       = 0.0f;
-            static const float TRIGGER_HYSTERESIS_DFL       = 1.0f;
-            static const float TRIGGER_HYSTERESIS_STEP      = 0.01f;
+            static constexpr float TRIGGER_HYSTERESIS_MAX       = 50.0f;
+            static constexpr float TRIGGER_HYSTERESIS_MIN       = 0.0f;
+            static constexpr float TRIGGER_HYSTERESIS_DFL       = 1.0f;
+            static constexpr float TRIGGER_HYSTERESIS_STEP      = 0.01f;
 
-            static const float TRIGGER_LEVEL_MAX            = 100.0f;
-            static const float TRIGGER_LEVEL_MIN            = -100.0f;
-            static const float TRIGGER_LEVEL_DFL            = 0.0f;
-            static const float TRIGGER_LEVEL_STEP           = 0.01f;
+            static constexpr float TRIGGER_LEVEL_MAX            = 100.0f;
+            static constexpr float TRIGGER_LEVEL_MIN            = -100.0f;
+            static constexpr float TRIGGER_LEVEL_DFL            = 0.0f;
+            static constexpr float TRIGGER_LEVEL_STEP           = 0.01f;
 
-            static const float TRIGGER_HOLD_TIME_MAX        = 60.0f;
-            static const float TRIGGER_HOLD_TIME_MIN        = 0.0f;
-            static const float TRIGGER_HOLD_TIME_DFL        = 0.0f;
-            static const float TRIGGER_HOLD_TIME_STEP       = 0.01f;
+            static constexpr float TRIGGER_HOLD_TIME_MAX        = 60.0f;
+            static constexpr float TRIGGER_HOLD_TIME_MIN        = 0.0f;
+            static constexpr float TRIGGER_HOLD_TIME_DFL        = 0.0f;
+            static constexpr float TRIGGER_HOLD_TIME_STEP       = 0.01f;
 
             enum oversampler_mode_selector_t
             {
@@ -153,7 +153,7 @@ namespace lsp
                 COUPLING_DFL = COUPLING_DC
             };
 
-            static const size_t SCOPE_MESH_SIZE = 512;
+            static constexpr size_t SCOPE_MESH_SIZE = 512;
         };
 
         extern const meta::plugin_t oscilloscope_x1;
