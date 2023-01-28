@@ -25,7 +25,7 @@
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MAJOR       1
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MINOR       0
-#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       5
+#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       6
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION  \
     LSP_MODULE_VERSION( \
@@ -38,7 +38,8 @@ namespace lsp
 {
     namespace meta
     {
-        static const int osclilloscope_classes[] = { C_UTILITY, -1};
+        static const int plugin_classes[]           = { C_UTILITY, -1 };
+        static const int clap_features[]            = { CF_ANALYZER, CF_UTILITY, -1 };
 
         static const port_item_t ovs_mode[] =
         {
@@ -255,8 +256,10 @@ namespace lsp
             "qbla",
             LSP_LADSPA_OSCILLOSCOPE_BASE + 0,
             LSP_LADSPA_URI("oscilloscope_x1"),
+            LSP_CLAP_URI("oscilloscope_x1"),
             LSP_PLUGINS_OSCILLOSCOPE_VERSION,
-            osclilloscope_classes,
+            plugin_classes,
+            clap_features,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             oscilloscope_x1_ports,
             "util/oscilloscope/x1.xml",
@@ -277,8 +280,10 @@ namespace lsp
             "ubsb",
             LSP_LADSPA_OSCILLOSCOPE_BASE + 1,
             LSP_LADSPA_URI("oscilloscope_x2"),
+            LSP_CLAP_URI("oscilloscope_x2"),
             LSP_PLUGINS_OSCILLOSCOPE_VERSION,
-            osclilloscope_classes,
+            plugin_classes,
+            clap_features,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             oscilloscope_x2_ports,
             "util/oscilloscope/x2.xml",
@@ -299,8 +304,10 @@ namespace lsp
             "atvi",
             LSP_LADSPA_OSCILLOSCOPE_BASE + 2,
             LSP_LADSPA_URI("oscilloscope_x4"),
+            LSP_CLAP_URI("oscilloscope_x4"),
             LSP_PLUGINS_OSCILLOSCOPE_VERSION,
-            osclilloscope_classes,
+            plugin_classes,
+            clap_features,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             oscilloscope_x4_ports,
             "util/oscilloscope/x4.xml",
@@ -308,5 +315,5 @@ namespace lsp
             NULL,
             &oscilloscope_bundle
         };
-    } // namespace meta
-} // namespace lsp
+    } /* namespace meta */
+} /* namespace lsp */
