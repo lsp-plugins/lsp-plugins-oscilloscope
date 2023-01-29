@@ -239,7 +239,7 @@ namespace lsp
         {
             "oscilloscope",
             "Oscilloscope",
-            B_UTILITIES,
+            B_ANALYZERS,
             "MCIpQebU5o4",
             "This plugin implements a simple, but flexible, oscilloscope. Different operating\nmodes are provided. For better analysis of high frequencies, oversampling\noption is available. Additional control ports allow one to set up advanced\nconfiguration and analysis."
         };
