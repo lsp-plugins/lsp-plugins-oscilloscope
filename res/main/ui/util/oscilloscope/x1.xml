@@ -47,28 +47,26 @@
 
 					<!-- Trigger References -->
 					<marker
-							v=":trlv_1 * 0.01 + :veps_1 * 0.01"
-							basis="1"
-							parallel="0"
-							color="graph_marker"
-							visibility="(:scmo_1 ieq 1) and ((:trtp_1 ieq 1) or (:trtp_1 ieq 2))"/>
-						<marker
-							v=":trlv_1 * 0.01 + :veps_1 * 0.01 - 2 * :trhy_1 * 0.01"
-							ox="1"
-							oy="0"
-							color="graph_marker"
-							visibility="(:scmo_1 ieq 1) and ((:trtp_1 ieq 3) or (:trtp_1 ieq 4))"/>
-						<marker
-							v=":trlv_1 * 0.01 + :veps_1 * 0.01 + 2 * :trhy_1 * 0.01"
-							ox="1"
-							oy="0"
-							color="graph_marker" visibility="(:scmo_1 ieq 1) and ((:trtp_1 ieq 3) or (:trtp_1 ieq 4))"/>
-						<marker
-							v=":hzps_1 * 0.01"
-							ox="1"
-							oy="0"
-							color="graph_marker"
-							visibility=":scmo_1 ieq 1"/>
+						v=":trlv_1 * 0.01 + :veps_1 * 0.01"
+						basis="1"
+						parallel="0"
+						color="graph_marker"
+						visibility="(:scmo_1 ieq 1) and ((:trtp_1 ieq 1) or (:trtp_1 ieq 2))"/>
+					<marker
+						v=":trlv_1 * 0.01 + :veps_1 * 0.01 - 2 * :trhy_1 * 0.01"
+						ox="1"
+						oy="0"
+						color="graph_marker"
+						visibility="(:scmo_1 ieq 1) and ((:trtp_1 ieq 3) or (:trtp_1 ieq 4))"/>
+					<marker
+						v=":trlv_1 * 0.01 + :veps_1 * 0.01 + 2 * :trhy_1 * 0.01"
+						ox="1"
+						oy="0"
+						color="graph_marker" visibility="(:scmo_1 ieq 1) and ((:trtp_1 ieq 3) or (:trtp_1 ieq 4))"/>
+					<marker
+						v=":hzps_1 * 0.01"
+						color="graph_marker"
+						visibility=":scmo_1 ieq 1"/>
 
 					<!-- Text -->
 					<ui:with y="-1" halign="1" valign="1">
@@ -156,7 +154,7 @@
 					<label bg.color="bg_schema"/>
 				</cell>
 
-        <!-- Row 2 -->
+        		<!-- Row 2 -->
 				<align halign="1">
 					<label bg.color="bg_schema" text="labels.oscilloscope.oversampler_mode" pad.h="6"/>
 				</align>

@@ -95,7 +95,7 @@
 						<marker v=":trlv_${i} * 0.01 + :veps_${i} * 0.01" basis="1" parallel="0" color="${col}" visibility="(:osc_cs ieq ${i} - 1) and (:scmo_${i} ieq 1) and !:glsw_${i} and ((:trtp_${i} ieq 1) or (:trtp_${i} ieq 2))"/>
 						<marker v=":trlv_${i} * 0.01 + :veps_${i} * 0.01 - 2 * :trhy_${i} * 0.01" ox="1" oy="0" color="${col}" visibility="(:osc_cs ieq ${i} - 1) and (:scmo_${i} ieq 1) and !:glsw_${i} and ((:trtp_${i} ieq 3) or (:trtp_${i} ieq 4))"/>
 						<marker v=":trlv_${i} * 0.01 + :veps_${i} * 0.01 + 2 * :trhy_${i} * 0.01" ox="1" oy="0" color="${col}" visibility="(:osc_cs ieq ${i} - 1) and (:scmo_${i} ieq 1) and !:glsw_${i} and ((:trtp_${i} ieq 3) or (:trtp_${i} ieq 4))"/>
-						<marker v=":hzps_${i} * 0.01" ox="1" oy="0" color="${col}" visibility="(:osc_cs ieq ${i} - 1) and (:scmo_${i} ieq 1) and !:glsw_${i}"/>
+						<marker v=":hzps_${i} * 0.01" color="${col}" visibility="(:osc_cs ieq ${i} - 1) and (:scmo_${i} ieq 1) and !:glsw_${i}"/>
 					</ui:for>
 
 					<!-- Text -->
