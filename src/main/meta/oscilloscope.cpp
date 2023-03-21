@@ -25,7 +25,7 @@
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MAJOR       1
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MINOR       0
-#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       7
+#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       8
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION  \
     LSP_MODULE_VERSION( \
@@ -174,7 +174,7 @@ namespace lsp
             TRG_CONTROLS(id, label)
 
         #define OSC_VISUALOUTS(id, label) \
-            STREAM("oscv" id, "Stream buffer" label, 3, 128, 0x4000)
+            STREAM("oscv" id, "Stream buffer" label, 3, 128, 0x8000)
 
         static const port_t oscilloscope_x1_ports[] =
         {
@@ -239,7 +239,7 @@ namespace lsp
         {
             "oscilloscope",
             "Oscilloscope",
-            B_UTILITIES,
+            B_ANALYZERS,
             "MCIpQebU5o4",
             "This plugin implements a simple, but flexible, oscilloscope. Different operating\nmodes are provided. For better analysis of high frequencies, oversampling\noption is available. Additional control ports allow one to set up advanced\nconfiguration and analysis."
         };
