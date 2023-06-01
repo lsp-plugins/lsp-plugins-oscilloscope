@@ -535,16 +535,16 @@ namespace lsp
                 case meta::oscilloscope_metadata::OSC_OVS_NONE:
                     return dspu::OM_NONE;
                 case meta::oscilloscope_metadata::OSC_OVS_2X:
-                    return dspu::OM_LANCZOS_2X4;
+                    return dspu::OM_LANCZOS_2X24BIT;
                 case meta::oscilloscope_metadata::OSC_OVS_3X:
-                    return dspu::OM_LANCZOS_3X4;
+                    return dspu::OM_LANCZOS_3X24BIT;
                 case meta::oscilloscope_metadata::OSC_OVS_4X:
-                    return dspu::OM_LANCZOS_4X4;
+                    return dspu::OM_LANCZOS_4X24BIT;
                 case meta::oscilloscope_metadata::OSC_OVS_6X:
-                    return dspu::OM_LANCZOS_6X4;
+                    return dspu::OM_LANCZOS_6X24BIT;
                 case meta::oscilloscope_metadata::OSC_OVS_8X:
                 default:
-                    return dspu::OM_LANCZOS_8X4;
+                    return dspu::OM_LANCZOS_8X24BIT;
             }
         }
 
