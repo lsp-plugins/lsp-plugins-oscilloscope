@@ -94,6 +94,9 @@ namespace lsp
         //-------------------------------------------------------------------------
         oscilloscope::oscilloscope(const meta::plugin_t *metadata, size_t channels): plug::Module(metadata)
         {
+            sDCBlockParams.fAlpha   = 0.0f;
+            sDCBlockParams.fGain    = 0.0f;
+
             nChannels           = channels;
             vChannels           = NULL;
 
