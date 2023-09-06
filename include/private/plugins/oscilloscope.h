@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2021 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2021 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2023 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2023 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-oscilloscope
  * Created on: 3 авг. 2021 г.
@@ -314,25 +314,26 @@ namespace lsp
                 void                init_state_stage(channel_t *c);
                 void                commit_staged_state_change(channel_t *c);
                 bool                graph_stream(channel_t *c);
+                void                do_destroy();
 
             public:
                 explicit oscilloscope(const meta::plugin_t *metadata, size_t channels);
-                virtual ~oscilloscope();
+                virtual ~oscilloscope() override;
 
-                virtual void        init(plug::IWrapper *wrapper, plug::IPort **ports);
-                virtual void        destroy();
+                virtual void        init(plug::IWrapper *wrapper, plug::IPort **ports) override;
+                virtual void        destroy() override;
 
             public:
-                virtual void        update_settings();
-                virtual void        update_sample_rate(long sr);
+                virtual void        update_settings() override;
+                virtual void        update_sample_rate(long sr) override;
 
-                virtual void        process(size_t samples);
+                virtual void        process(size_t samples) override;
 
-                virtual void        dump(dspu::IStateDumper *v) const;
+                virtual void        dump(dspu::IStateDumper *v) const override;
 
-                virtual bool        inline_display(plug::ICanvas *cv, size_t width, size_t height);
+                virtual bool        inline_display(plug::ICanvas *cv, size_t width, size_t height) override;
         };
-    } // namespace plugins
-} // namespace lsp
+    } /* namespace plugins */
+} /* namespace lsp */
 
 #endif /* PRIVATE_PLUGINS_OSCILLOSCOPE_H_ */

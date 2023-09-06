@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2021 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2021 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2023 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2023 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-oscilloscope
  * Created on: 3 авг. 2021 г.
@@ -127,9 +127,16 @@ namespace lsp
 
         oscilloscope::~oscilloscope()
         {
+            do_destroy();
         }
 
         void oscilloscope::destroy()
+        {
+            plug::Module::destroy();
+            do_destroy();
+        }
+
+        void oscilloscope::do_destroy()
         {
             free_aligned(pData);
             pData = NULL;
@@ -371,17 +378,20 @@ namespace lsp
             TRACE_PORT(ports[port_id]);
             pFreeze         = ports[port_id++];
 
-            // Channel selector only exists on multi-channel versions. Skip for 1X plugin.
+            // . Skip for 1X plugin.
             if (nChannels > 1)
             {
-                TRACE_PORT(ports[port_id]);
-                pChannelSelector = ports[port_id++];
+
             }
 
             // Global ports only exists on multi-channel versions. Skip for 1X plugin.
 
             if (nChannels > 1)
             {
+                // Channel selector only exists on multi-channel versions
+                TRACE_PORT(ports[port_id]);
+                pChannelSelector = ports[port_id++];
+
                 lsp_trace("Binding global control ports");
 
                 TRACE_PORT(ports[port_id]);
@@ -1134,7 +1144,7 @@ namespace lsp
                     c->sStateStage.nPV_pOvsMode = overmode;
                     c->nUpdate |= UPD_OVERSAMPLER_X | UPD_OVERSAMPLER_Y | UPD_OVERSAMPLER_EXT |
                                   UPD_PRETRG_DELAY | UPD_SWEEP_GENERATOR | UPD_TRIGGER_HOLD |
-                                  UPD_XY_RECORD_TIME | UPD_SWEEP_GENERATOR;
+                                  UPD_XY_RECORD_TIME;
                 }
 
                 size_t trginput = (c->bUseGlobal) ? pTrgInput->value() : c->pTrgInput->value();
@@ -1200,7 +1210,7 @@ namespace lsp
                 }
 
                 float horDiv = (c->bUseGlobal) ? pHorDiv->value() : c->pHorDiv->value();
-                if (timeDiv != c->sStateStage.fPV_pHorDiv)
+                if (horDiv != c->sStateStage.fPV_pHorDiv)
                 {
                     c->sStateStage.fPV_pHorDiv = horDiv;
                     c->nUpdate |= UPD_HOR_SCALES;
@@ -1701,7 +1711,7 @@ namespace lsp
 
             return true;
         }
-    } // namespace plugins
-} // namespace lsp
+    } /* namespace plugins */
+} /* namespace lsp */
 
 
