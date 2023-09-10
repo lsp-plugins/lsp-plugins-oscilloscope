@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2021 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2021 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2023 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2023 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-oscilloscope
  * Created on: 3 авг. 2021 г.
@@ -27,7 +27,6 @@
 #include <lsp-plug.in/shared/id_colors.h>
 #include <lsp-plug.in/stdlib/math.h>
 
-#define TRACE_PORT(p)       lsp_trace("  port id=%s", (p)->metadata()->id);
 #define BUF_LIM_SIZE        196608
 #define PRE_TRG_MAX_SIZE    196608
 
@@ -53,6 +52,12 @@ namespace lsp
 {
     namespace plugins
     {
+        static plug::IPort *TRACE_PORT(plug::IPort *p)
+        {
+            lsp_trace("  port id=%s", (p)->metadata()->id);
+            return p;
+        }
+
         //-------------------------------------------------------------------------
         // Plugin factory
         typedef struct plugin_settings_t
@@ -89,6 +94,9 @@ namespace lsp
         //-------------------------------------------------------------------------
         oscilloscope::oscilloscope(const meta::plugin_t *metadata, size_t channels): plug::Module(metadata)
         {
+            sDCBlockParams.fAlpha   = 0.0f;
+            sDCBlockParams.fGain    = 0.0f;
+
             nChannels           = channels;
             vChannels           = NULL;
 
@@ -127,9 +135,16 @@ namespace lsp
 
         oscilloscope::~oscilloscope()
         {
+            do_destroy();
         }
 
         void oscilloscope::destroy()
+        {
+            plug::Module::destroy();
+            do_destroy();
+        }
+
+        void oscilloscope::do_destroy()
         {
             free_aligned(pData);
             pData = NULL;
@@ -340,191 +355,94 @@ namespace lsp
 
             for (size_t ch = 0; ch < nChannels; ++ch)
             {
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pIn_x = ports[port_id++];
+                channel_t *c        = &vChannels[ch];
 
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pIn_y = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pIn_ext = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pOut_x = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pOut_y = ports[port_id++];
+                c->pIn_x            = TRACE_PORT(ports[port_id++]);
+                c->pIn_y            = TRACE_PORT(ports[port_id++]);
+                c->pIn_ext          = TRACE_PORT(ports[port_id++]);
+                c->pOut_x           = TRACE_PORT(ports[port_id++]);
+                c->pOut_y           = TRACE_PORT(ports[port_id++]);
             }
 
             // Common settings
             lsp_trace("Binding common ports");
 
-            TRACE_PORT(ports[port_id]);
-            pStrobeHistSize = ports[port_id++];
-
-            TRACE_PORT(ports[port_id]);
-            pXYRecordTime   = ports[port_id++];
-
-            TRACE_PORT(ports[port_id]);
-            ++port_id;      // Skip 'maxdots' parameter
-
-            TRACE_PORT(ports[port_id]);
-            pFreeze         = ports[port_id++];
-
-            // Channel selector only exists on multi-channel versions. Skip for 1X plugin.
-            if (nChannels > 1)
-            {
-                TRACE_PORT(ports[port_id]);
-                pChannelSelector = ports[port_id++];
-            }
+            pStrobeHistSize = TRACE_PORT(ports[port_id++]);
+            pXYRecordTime   = TRACE_PORT(ports[port_id++]);
+            TRACE_PORT(ports[port_id++]); // Skip 'maxdots' parameter
+            pFreeze         = TRACE_PORT(ports[port_id++]);
 
             // Global ports only exists on multi-channel versions. Skip for 1X plugin.
-
+            lsp_trace("Binding global control ports");
             if (nChannels > 1)
             {
-                lsp_trace("Binding global control ports");
-
-                TRACE_PORT(ports[port_id]);
-                pOvsMode = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pScpMode = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pCoupling_x = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pCoupling_y = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pCoupling_ext = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pSweepType = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pTimeDiv = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pHorDiv = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pHorPos = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pVerDiv = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pVerPos = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pTrgHys = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pTrgLev = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pTrgHold = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pTrgMode = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pTrgType = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pTrgInput = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                pTrgReset = ports[port_id++];
+                // Channel selector only exists on multi-channel versions
+                pChannelSelector    = TRACE_PORT(ports[port_id++]);
+                pOvsMode            = TRACE_PORT(ports[port_id++]);
+                pScpMode            = TRACE_PORT(ports[port_id++]);
+                pCoupling_x         = TRACE_PORT(ports[port_id++]);
+                pCoupling_y         = TRACE_PORT(ports[port_id++]);
+                pCoupling_ext       = TRACE_PORT(ports[port_id++]);
+                pSweepType          = TRACE_PORT(ports[port_id++]);
+                pTimeDiv            = TRACE_PORT(ports[port_id++]);
+                pHorDiv             = TRACE_PORT(ports[port_id++]);
+                pHorPos             = TRACE_PORT(ports[port_id++]);
+                pVerDiv             = TRACE_PORT(ports[port_id++]);
+                pVerPos             = TRACE_PORT(ports[port_id++]);
+                pTrgHys             = TRACE_PORT(ports[port_id++]);
+                pTrgLev             = TRACE_PORT(ports[port_id++]);
+                pTrgHold            = TRACE_PORT(ports[port_id++]);
+                pTrgMode            = TRACE_PORT(ports[port_id++]);
+                pTrgType            = TRACE_PORT(ports[port_id++]);
+                pTrgInput           = TRACE_PORT(ports[port_id++]);
+                pTrgReset           = TRACE_PORT(ports[port_id++]);
             }
 
             lsp_trace("Binding channel control ports");
-
-
             for (size_t ch = 0; ch < nChannels; ++ch)
             {
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pOvsMode = ports[port_id++];
+                channel_t *c        = &vChannels[ch];
 
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pScpMode = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pCoupling_x = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pCoupling_y = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pCoupling_ext = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pSweepType = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pTimeDiv = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pHorDiv = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pHorPos = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pVerDiv = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pVerPos = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pTrgHys = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pTrgLev = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pTrgHold = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pTrgMode = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pTrgType = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pTrgInput = ports[port_id++];
-
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pTrgReset = ports[port_id++];
+                c->pOvsMode         = TRACE_PORT(ports[port_id++]);
+                c->pScpMode         = TRACE_PORT(ports[port_id++]);
+                c->pCoupling_x      = TRACE_PORT(ports[port_id++]);
+                c->pCoupling_y      = TRACE_PORT(ports[port_id++]);
+                c->pCoupling_ext    = TRACE_PORT(ports[port_id++]);
+                c->pSweepType       = TRACE_PORT(ports[port_id++]);
+                c->pTimeDiv         = TRACE_PORT(ports[port_id++]);
+                c->pHorDiv          = TRACE_PORT(ports[port_id++]);
+                c->pHorPos          = TRACE_PORT(ports[port_id++]);
+                c->pVerDiv          = TRACE_PORT(ports[port_id++]);
+                c->pVerPos          = TRACE_PORT(ports[port_id++]);
+                c->pTrgHys          = TRACE_PORT(ports[port_id++]);
+                c->pTrgLev          = TRACE_PORT(ports[port_id++]);
+                c->pTrgHold         = TRACE_PORT(ports[port_id++]);
+                c->pTrgMode         = TRACE_PORT(ports[port_id++]);
+                c->pTrgType         = TRACE_PORT(ports[port_id++]);
+                c->pTrgInput        = TRACE_PORT(ports[port_id++]);
+                c->pTrgReset        = TRACE_PORT(ports[port_id++]);
             }
 
             lsp_trace("Binding channel switches ports");
-
             if (nChannels > 1)
             {
                 for (size_t ch = 0; ch < nChannels; ++ch)
                 {
-                    TRACE_PORT(ports[port_id]);
-                    vChannels[ch].pGlobalSwitch = ports[port_id++];
+                    channel_t *c        = &vChannels[ch];
 
-                    TRACE_PORT(ports[port_id]);
-                    vChannels[ch].pFreezeSwitch = ports[port_id++];
-
-                    TRACE_PORT(ports[port_id]);
-                    vChannels[ch].pSoloSwitch = ports[port_id++];
-
-                    TRACE_PORT(ports[port_id]);
-                    vChannels[ch].pMuteSwitch = ports[port_id++];
+                    c->pGlobalSwitch    = TRACE_PORT(ports[port_id++]);
+                    c->pFreezeSwitch    = TRACE_PORT(ports[port_id++]);
+                    c->pSoloSwitch      = TRACE_PORT(ports[port_id++]);
+                    c->pMuteSwitch      = TRACE_PORT(ports[port_id++]);
                 }
             }
 
             lsp_trace("Binding channel visual outputs ports");
-
             for (size_t ch = 0; ch < nChannels; ++ch)
             {
-                TRACE_PORT(ports[port_id]);
-                vChannels[ch].pStream = ports[port_id++];
+                channel_t *c        = &vChannels[ch];
+
+                c->pStream          = TRACE_PORT(ports[port_id++]);
             }
         }
 
@@ -1134,7 +1052,7 @@ namespace lsp
                     c->sStateStage.nPV_pOvsMode = overmode;
                     c->nUpdate |= UPD_OVERSAMPLER_X | UPD_OVERSAMPLER_Y | UPD_OVERSAMPLER_EXT |
                                   UPD_PRETRG_DELAY | UPD_SWEEP_GENERATOR | UPD_TRIGGER_HOLD |
-                                  UPD_XY_RECORD_TIME | UPD_SWEEP_GENERATOR;
+                                  UPD_XY_RECORD_TIME;
                 }
 
                 size_t trginput = (c->bUseGlobal) ? pTrgInput->value() : c->pTrgInput->value();
@@ -1200,7 +1118,7 @@ namespace lsp
                 }
 
                 float horDiv = (c->bUseGlobal) ? pHorDiv->value() : c->pHorDiv->value();
-                if (timeDiv != c->sStateStage.fPV_pHorDiv)
+                if (horDiv != c->sStateStage.fPV_pHorDiv)
                 {
                     c->sStateStage.fPV_pHorDiv = horDiv;
                     c->nUpdate |= UPD_HOR_SCALES;
@@ -1701,7 +1619,7 @@ namespace lsp
 
             return true;
         }
-    } // namespace plugins
-} // namespace lsp
+    } /* namespace plugins */
+} /* namespace lsp */
 
 
