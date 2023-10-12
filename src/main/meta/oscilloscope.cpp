@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2021 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2021 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2023 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2023 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-oscilloscope
  * Created on: 3 авг. 2021 г.
@@ -25,7 +25,7 @@
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MAJOR       1
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MINOR       0
-#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       13
+#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       14
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION  \
     LSP_MODULE_VERSION( \
@@ -235,6 +235,61 @@ namespace lsp
             PORTS_END
         };
 
+        STEREO_PORT_GROUP_PORTS(in_1, "in_x_1", "in_y_1");
+        STEREO_PORT_GROUP_PORTS(in_2, "in_x_2", "in_y_2");
+        STEREO_PORT_GROUP_PORTS(in_3, "in_x_3", "in_y_3");
+        STEREO_PORT_GROUP_PORTS(in_4, "in_x_4", "in_y_4");
+        MONO_PORT_GROUP_PORT(ext_1, "in_ext_1");
+        MONO_PORT_GROUP_PORT(ext_2, "in_ext_2");
+        MONO_PORT_GROUP_PORT(ext_3, "in_ext_3");
+        MONO_PORT_GROUP_PORT(ext_4, "in_ext_4");
+        STEREO_PORT_GROUP_PORTS(out_1, "out_x_1", "out_y_1");
+        STEREO_PORT_GROUP_PORTS(out_2, "out_x_2", "out_y_2");
+        STEREO_PORT_GROUP_PORTS(out_3, "out_x_3", "out_y_3");
+        STEREO_PORT_GROUP_PORTS(out_4, "out_x_4", "out_y_4");
+
+        const port_group_t oscilloscope_x1_port_groups[] =
+        {
+            { "in_1",           "Input 1",       GRP_STEREO,    PGF_IN | PGF_MAIN,          in_1_ports          },
+            { "ext_1",          "External 1",    GRP_MONO,      PGF_IN,                     ext_1_ports         },
+            { "out_1",          "Output 1",      GRP_STEREO,    PGF_OUT | PGF_MAIN,         out_1_ports         },
+            PORT_GROUPS_END
+        };
+
+        const port_group_t oscilloscope_x2_port_groups[] =
+        {
+            { "in_1",           "Input 1",       GRP_STEREO,    PGF_IN | PGF_MAIN,          in_1_ports          },
+            { "ext_1",          "External 1",    GRP_MONO,      PGF_IN,                     ext_1_ports         },
+            { "out_1",          "Output 1",      GRP_STEREO,    PGF_OUT | PGF_MAIN,         out_1_ports         },
+
+            { "in_2",           "Input 2",       GRP_STEREO,    PGF_IN,                     in_2_ports          },
+            { "ext_2",          "External 2",    GRP_MONO,      PGF_IN,                     ext_2_ports         },
+            { "out_2",          "Output 2",      GRP_STEREO,    PGF_OUT,                    out_2_ports         },
+
+            PORT_GROUPS_END
+        };
+
+        const port_group_t oscilloscope_x4_port_groups[] =
+        {
+            { "in_1",           "Input 1",       GRP_STEREO,    PGF_IN | PGF_MAIN,         in_1_ports          },
+            { "ext_1",          "External 1",    GRP_MONO,      PGF_IN,                    ext_1_ports         },
+            { "out_1",          "Output 1",      GRP_STEREO,    PGF_OUT | PGF_MAIN,        out_1_ports         },
+
+            { "in_2",           "Input 2",       GRP_STEREO,    PGF_IN,                    in_2_ports          },
+            { "ext_2",          "External 2",    GRP_MONO,      PGF_IN,                    ext_2_ports         },
+            { "out_2",          "Output 2",      GRP_STEREO,    PGF_OUT,                   out_2_ports         },
+
+            { "in_3",           "Input 3",       GRP_STEREO,    PGF_IN,                    in_3_ports          },
+            { "ext_3",          "External 3",    GRP_MONO,      PGF_IN,                    ext_3_ports         },
+            { "out_3",          "Output 3",      GRP_STEREO,    PGF_OUT,                   out_3_ports         },
+
+            { "in_4",           "Input 4",       GRP_STEREO,    PGF_IN,                    in_4_ports          },
+            { "ext_4",          "External 4",    GRP_MONO,      PGF_IN,                    ext_4_ports         },
+            { "out_4",          "Output 4",      GRP_STEREO,    PGF_OUT,                   out_4_ports         },
+
+            PORT_GROUPS_END
+        };
+
         const meta::bundle_t oscilloscope_bundle =
         {
             "oscilloscope",
@@ -264,7 +319,7 @@ namespace lsp
             oscilloscope_x1_ports,
             "util/oscilloscope/x1.xml",
             NULL,
-            NULL,
+            oscilloscope_x1_port_groups,
             &oscilloscope_bundle
         };
 
@@ -288,7 +343,7 @@ namespace lsp
             oscilloscope_x2_ports,
             "util/oscilloscope/x2.xml",
             NULL,
-            NULL,
+            oscilloscope_x2_port_groups,
             &oscilloscope_bundle
         };
 
@@ -312,7 +367,7 @@ namespace lsp
             oscilloscope_x4_ports,
             "util/oscilloscope/x4.xml",
             NULL,
-            NULL,
+            oscilloscope_x4_port_groups,
             &oscilloscope_bundle
         };
     } /* namespace meta */
