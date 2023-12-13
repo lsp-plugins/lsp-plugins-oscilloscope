@@ -303,6 +303,7 @@ namespace lsp
         {
             "Oscilloscope x1",
             "Oscilloscope x1",
+            "Oscilloscope x1",
             "O1", // Oscilloscope x1
             &developers::s_tronci,
             "oscilloscope_x1",
@@ -327,6 +328,7 @@ namespace lsp
         {
             "Oscilloscope x2",
             "Oscilloscope x2",
+            "Oscilloscope x2",
             "O2", // Oscilloscope x2
             &developers::s_tronci,
             "oscilloscope_x2",
@@ -349,6 +351,7 @@ namespace lsp
 
         const meta::plugin_t oscilloscope_x4 =
         {
+            "Oscilloscope x4",
             "Oscilloscope x4",
             "Oscilloscope x4",
             "O4", // Oscilloscope x4
