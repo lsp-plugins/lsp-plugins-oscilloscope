@@ -4,13 +4,12 @@
 			<!-- Fast Control -->
 			<hbox>
 				<label bg.color="bg_schema" text="labels.oscilloscope.mode" pad.h="6"/>
-				<!-- TODO:
-					 <ui:with ui:inject="Button_orange" height="22" bg.color="bg_schema" pad.h="6" pad.v="4">
-					<button text="Waveform" />
-					<button text="Stereo" />
-					<button text="X/Y" />
-				</ui:with> -->
-				<combo id="scmo_1" bg.color="osc_bg_gray" pad.h="6" pad.b="1"/>
+				<ui:with ui:inject="Button_orange" height="22" bg.color="bg_schema" pad.h="6" pad.v="4">
+					<button id="scmo_1" value="1" text="Waveform" />
+					<button id="scmo_1" value="2" text="Stereo image" />
+					<button id="scmo_1" value="0" text="X/Y" />
+				</ui:with>
+				<!-- <combo id="scmo_1" bg.color="osc_bg_gray" pad.h="6" pad.b="1"/> -->
 				<void hexpand="true"/>
 				<button id="freeze" text="actions.freeze" ui:inject="Button_cyan" height="22" bg.color="bg_schema" pad.h="6" pad.v="4"/>
 			</hbox>
