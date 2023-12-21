@@ -5,8 +5,8 @@
 			"dc": "DC"
 		},
 		"mode": {
-			"goniometer": "Goniometer",
-			"triggered": "Triggered",
+			"goniometer": "Stereo image",
+			"triggered": "Wave form",
 			"xy": "XY"
 		},
 		"oversampler": {
