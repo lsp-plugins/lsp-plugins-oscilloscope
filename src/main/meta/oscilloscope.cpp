@@ -25,7 +25,7 @@
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MAJOR       1
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MINOR       0
-#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       16
+#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       17
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION  \
     LSP_MODULE_VERSION( \
@@ -310,6 +310,8 @@ namespace lsp
             LSP_LV2_URI("oscilloscope_x1"),
             LSP_LV2UI_URI("oscilloscope_x1"),
             "qbla",
+            LSP_VST3_UID("o1      qbla"),
+            LSP_VST3UI_UID("o1      qbla"),
             LSP_LADSPA_OSCILLOSCOPE_BASE + 0,
             LSP_LADSPA_URI("oscilloscope_x1"),
             LSP_CLAP_URI("oscilloscope_x1"),
@@ -335,6 +337,8 @@ namespace lsp
             LSP_LV2_URI("oscilloscope_x2"),
             LSP_LV2UI_URI("oscilloscope_x2"),
             "ubsb",
+            LSP_VST3_UID("o2      ubsb"),
+            LSP_VST3UI_UID("o2      ubsb"),
             LSP_LADSPA_OSCILLOSCOPE_BASE + 1,
             LSP_LADSPA_URI("oscilloscope_x2"),
             LSP_CLAP_URI("oscilloscope_x2"),
@@ -360,6 +364,8 @@ namespace lsp
             LSP_LV2_URI("oscilloscope_x4"),
             LSP_LV2UI_URI("oscilloscope_x4"),
             "atvi",
+            LSP_VST3_UID("o4      atvi"),
+            LSP_VST3UI_UID("o4      atvi"),
             LSP_LADSPA_OSCILLOSCOPE_BASE + 2,
             LSP_LADSPA_URI("oscilloscope_x4"),
             LSP_CLAP_URI("oscilloscope_x4"),
