@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2023 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2023 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2024 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2024 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-oscilloscope
  * Created on: 3 авг. 2021 г.
@@ -307,14 +307,17 @@ namespace lsp
             "O1", // Oscilloscope x1
             &developers::s_tronci,
             "oscilloscope_x1",
-            LSP_LV2_URI("oscilloscope_x1"),
-            LSP_LV2UI_URI("oscilloscope_x1"),
-            "qbla",
-            LSP_VST3_UID("o1      qbla"),
-            LSP_VST3UI_UID("o1      qbla"),
-            LSP_LADSPA_OSCILLOSCOPE_BASE + 0,
-            LSP_LADSPA_URI("oscilloscope_x1"),
-            LSP_CLAP_URI("oscilloscope_x1"),
+            {
+                LSP_LV2_URI("oscilloscope_x1"),
+                LSP_LV2UI_URI("oscilloscope_x1"),
+                "qbla",
+                LSP_VST3_UID("o1      qbla"),
+                LSP_VST3UI_UID("o1      qbla"),
+                LSP_LADSPA_OSCILLOSCOPE_BASE + 0,
+                LSP_LADSPA_URI("oscilloscope_x1"),
+                LSP_CLAP_URI("oscilloscope_x1"),
+                LSP_GST_UID("oscilloscope_x1"),
+            },
             LSP_PLUGINS_OSCILLOSCOPE_VERSION,
             plugin_classes,
             clap_features,
@@ -334,14 +337,17 @@ namespace lsp
             "O2", // Oscilloscope x2
             &developers::s_tronci,
             "oscilloscope_x2",
-            LSP_LV2_URI("oscilloscope_x2"),
-            LSP_LV2UI_URI("oscilloscope_x2"),
-            "ubsb",
-            LSP_VST3_UID("o2      ubsb"),
-            LSP_VST3UI_UID("o2      ubsb"),
-            LSP_LADSPA_OSCILLOSCOPE_BASE + 1,
-            LSP_LADSPA_URI("oscilloscope_x2"),
-            LSP_CLAP_URI("oscilloscope_x2"),
+            {
+                LSP_LV2_URI("oscilloscope_x2"),
+                LSP_LV2UI_URI("oscilloscope_x2"),
+                "ubsb",
+                LSP_VST3_UID("o2      ubsb"),
+                LSP_VST3UI_UID("o2      ubsb"),
+                LSP_LADSPA_OSCILLOSCOPE_BASE + 1,
+                LSP_LADSPA_URI("oscilloscope_x2"),
+                LSP_CLAP_URI("oscilloscope_x2"),
+                LSP_GST_UID("oscilloscope_x2"),
+            },
             LSP_PLUGINS_OSCILLOSCOPE_VERSION,
             plugin_classes,
             clap_features,
@@ -361,14 +367,17 @@ namespace lsp
             "O4", // Oscilloscope x4
             &developers::s_tronci,
             "oscilloscope_x4",
-            LSP_LV2_URI("oscilloscope_x4"),
-            LSP_LV2UI_URI("oscilloscope_x4"),
-            "atvi",
-            LSP_VST3_UID("o4      atvi"),
-            LSP_VST3UI_UID("o4      atvi"),
-            LSP_LADSPA_OSCILLOSCOPE_BASE + 2,
-            LSP_LADSPA_URI("oscilloscope_x4"),
-            LSP_CLAP_URI("oscilloscope_x4"),
+            {
+                LSP_LV2_URI("oscilloscope_x4"),
+                LSP_LV2UI_URI("oscilloscope_x4"),
+                "atvi",
+                LSP_VST3_UID("o4      atvi"),
+                LSP_VST3UI_UID("o4      atvi"),
+                LSP_LADSPA_OSCILLOSCOPE_BASE + 2,
+                LSP_LADSPA_URI("oscilloscope_x4"),
+                LSP_CLAP_URI("oscilloscope_x4"),
+                LSP_GST_UID("oscilloscope_x4"),
+            },
             LSP_PLUGINS_OSCILLOSCOPE_VERSION,
             plugin_classes,
             clap_features,
