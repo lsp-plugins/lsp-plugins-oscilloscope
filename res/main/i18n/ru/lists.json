@@ -5,8 +5,8 @@
 			"dc": "Пост"
 		},
 		"mode": {
-			"goniometer": "Гониометр",
-			"triggered": "Триггер",
+			"goniometer": "Стерео-картина",
+			"triggered": "Волна",
 			"xy": "XY"
 		},
 		"oversampler": {
