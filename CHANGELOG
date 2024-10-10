@@ -5,6 +5,7 @@
 === 1.0.22 ===
 * Fixes for compilation with newer GCC.
 * Updates for new code style.
+* Updated build scripts and dependencies.
 
 === 1.0.21 ===
 * Updated build scripts and dependencies.
