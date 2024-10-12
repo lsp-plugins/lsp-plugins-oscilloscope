@@ -2,6 +2,9 @@
 * RECENT CHANGES
 *******************************************************************************
 
+=== 1.0.23 ===
+
+
 === 1.0.22 ===
 * Fixes for compilation with newer GCC.
 * Updates for new code style.
