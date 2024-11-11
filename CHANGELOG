@@ -3,7 +3,7 @@
 *******************************************************************************
 
 === 1.0.23 ===
-
+* Fixed axis subscriptions in the UI.
 
 === 1.0.22 ===
 * Fixes for compilation with newer GCC.

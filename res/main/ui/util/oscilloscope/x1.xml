@@ -70,7 +70,7 @@
 
 					<!-- Text -->
 					<ui:with y="-1" halign="1" valign="1">
-						<text x="-1" text="X"/>
+						<text x="-1" text="graph.axis.x"/>
 						<text x="-0.75" text="-0.75"/>
 						<text x="-0.5" text="-0.5"/>
 						<text x="-0.25" text="-0.25"/>
@@ -82,14 +82,14 @@
 					</ui:with>
 
 					<ui:with x="-1" halign="1" valign="-1">
-						<text x="-1" text="Y"/>
-						<text x="-0.75" text="-0.75"/>
-						<text x="-0.5" text="-0.5"/>
-						<text x="-0.25" text="-0.25"/>
-						<text x="0" text="0"/>
-						<text x="0.25" text="0.25"/>
-						<text x="0.5" text="0.5"/>
-						<text x="0.75" text="0.75"/>
+						<text y="-0.75" text="-0.75"/>
+						<text y="-0.5" text="-0.5"/>
+						<text y="-0.25" text="-0.25"/>
+						<text y="0" text="0"/>
+						<text y="0.25" text="0.25"/>
+						<text y="0.5" text="0.5"/>
+						<text y="0.75" text="0.75"/>
+						<text y="1" text="graph.axis.y"/>
 					</ui:with>
 				</graph>
 			</group>
