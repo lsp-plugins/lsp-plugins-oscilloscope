@@ -4,6 +4,7 @@
 
 === 1.0.23 ===
 * Fixed axis subscriptions in the UI.
+* Updated build scripts and dependencies.
 
 === 1.0.22 ===
 * Fixes for compilation with newer GCC.
