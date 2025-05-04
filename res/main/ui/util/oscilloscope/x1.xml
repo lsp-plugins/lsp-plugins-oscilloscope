@@ -2,9 +2,17 @@
 	<hbox spacing="4">
 		<vbox spacing="4" expand="true">
 			<!-- Fast Control -->
-				<align halign="-1">
-						<button id="freeze" text="actions.freeze" ui:inject="Button_cyan" height="22" bg.color="bg_schema" pad.h="6" pad.v="4"/>
-				</align>
+			<hbox>
+				<label bg.color="bg_schema" text="labels.oscilloscope.mode" pad.h="6"/>
+				<ui:with ui:inject="Button_orange" height="22" bg.color="bg_schema" pad.h="6" pad.v="4">
+					<button id="scmo_1" value="1" text="Waveform" />
+					<button id="scmo_1" value="2" text="Stereo image" />
+					<button id="scmo_1" value="0" text="X/Y" />
+				</ui:with>
+				<!-- <combo id="scmo_1" bg.color="osc_bg_gray" pad.h="6" pad.b="1"/> -->
+				<void hexpand="true"/>
+				<button id="freeze" text="actions.freeze" ui:inject="Button_cyan" height="22" bg.color="bg_schema" pad.h="6" pad.v="4"/>
+			</hbox>
 
 			<group ui:inject="GraphGroup" ipadding="0" expand="true" fill="true" text="labels.graphs.oscilloscope">
 				<graph width.min="550" height.min="550" expand="true">
@@ -163,12 +171,12 @@
 				</cell>
 
 				<!-- Row 3 -->
-				<align halign="1">
+				<!-- <align halign="1">
 					<label bg.color="bg_schema" text="labels.oscilloscope.mode" pad.h="6"/>
 				</align>
 				<cell cols="2">
 					<combo id="scmo_1" bg.color="osc_bg_gray"  pad.h="6" pad.b="1"/>
-				</cell>
+				</cell> -->
 
 				<!-- Row 4 -->
 				<void color="bg" height="4" vreduce="true"/>
