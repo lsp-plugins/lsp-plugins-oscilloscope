@@ -127,28 +127,28 @@ namespace lsp
             CONTROL("sh_sz", "Strobe History Size", U_NONE, oscilloscope_metadata::STROBE_HISTORY), \
             LOG_CONTROL("xyrt", "XY Record Time", "XY time", U_MSEC, oscilloscope_metadata::XY_RECORD_TIME), \
             LOG_CONTROL("maxdots", "Maximum Dots for Plotting", "Max dots", U_NONE, oscilloscope_metadata::MAXDOTS), \
-            SWITCH("freeze", "Global Freeze Switch", 0.0f)
+            SWITCH("freeze", "Global Freeze Switch", "Freeze all", 0.0f)
 
         #define CHANNEL_SELECTOR(osc_channels) \
-            COMBO("osc_cs", "Oscilloscope Channel Selector", 0, osc_channels)
+            COMBO("osc_cs", "Oscilloscope Channel Selector", "Chan selector", 0, osc_channels)
 
         #define CHANNEL_SWITCHES(id, label) \
-            SWITCH("glsw" id, "Global Switch" label, 0.0f), \
-            SWITCH("frz" id, "Freeze Switch" label, 0.0f), \
-            SWITCH("chsl" id, "Solo Switch" label, 0.0f), \
-            SWITCH("chmt" id, "Mute Switch" label, 0.0f)
+            SWITCH("glsw" id, "Global Switch" label, "Global " label, 0.0f), \
+            SWITCH("frz" id, "Freeze Switch" label, "Freeze " label, 0.0f), \
+            SWITCH("chsl" id, "Solo Switch" label, "Solo " label, 0.0f), \
+            SWITCH("chmt" id, "Mute Switch" label, "Mute " label, 0.0f)
 
-        #define OP_CONTROLS(id, label) \
-            COMBO("ovmo" id, "Oversampler Mode" label, oscilloscope_metadata::OSC_OVS_DFL, ovs_mode), \
-            COMBO("scmo" id, "Mode" label, oscilloscope_metadata::MODE_DFL, osc_mode)
+        #define OP_CONTROLS(id, label, alias) \
+            COMBO("ovmo" id, "Oversampler Mode" label, "Oversampling " alias, oscilloscope_metadata::OSC_OVS_DFL, ovs_mode), \
+            COMBO("scmo" id, "Mode" label, "Mode " alias, oscilloscope_metadata::MODE_DFL, osc_mode)
 
-        #define CP_CONTROLS(id, label) \
-            COMBO("sccx" id, "Coupling X" label, oscilloscope_metadata::COUPLING_DFL, osc_coupling), \
-            COMBO("sccy" id, "Coupling Y" label, oscilloscope_metadata::COUPLING_DFL, osc_coupling), \
-            COMBO("scce" id, "Coupling EXT" label, oscilloscope_metadata::COUPLING_DFL, osc_coupling)
+        #define CP_CONTROLS(id, label, alias) \
+            COMBO("sccx" id, "Coupling X" label, "Couple X " alias, oscilloscope_metadata::COUPLING_DFL, osc_coupling), \
+            COMBO("sccy" id, "Coupling Y" label, "Couple Y " alias, oscilloscope_metadata::COUPLING_DFL, osc_coupling), \
+            COMBO("scce" id, "Coupling EXT" label, "Couple Ext " alias, oscilloscope_metadata::COUPLING_DFL, osc_coupling)
 
         #define HOR_CONTROLS(id, label, alias) \
-            COMBO("swtp" id, "Sweep Type" label, oscilloscope_metadata::SWEEP_TYPE_DFL, sweep_type), \
+            COMBO("swtp" id, "Sweep Type" label, "Sweep " alias, oscilloscope_metadata::SWEEP_TYPE_DFL, sweep_type), \
             LOG_CONTROL("tmdv" id, "Time Division" label, "Time div" alias, U_MSEC, oscilloscope_metadata::TIME_DIVISION), \
             LOG_CONTROL("hzdv" id, "Horizontal Division" label, "Hor div" alias, U_NONE, oscilloscope_metadata::HORIZONTAL_DIVISION), \
             CONTROL("hzps" id, "Horizontal Position" label, U_PERCENT, oscilloscope_metadata::TIME_POSITION)
@@ -161,14 +161,14 @@ namespace lsp
             CONTROL("trhy" id, "Trigger Hysteresis" label, U_PERCENT, oscilloscope_metadata::TRIGGER_HYSTERESIS), \
             CONTROL("trlv" id, "Trigger Level" label, U_PERCENT, oscilloscope_metadata::TRIGGER_LEVEL), \
             LOG_CONTROL("trho" id, "Trigger Hold Time" label, "Hold time" alias, U_SEC, oscilloscope_metadata::TRIGGER_HOLD_TIME), \
-            COMBO("trmo" id, "Trigger Mode" label, oscilloscope_metadata::TRIGGER_MODE_DFL, osc_trg_mode), \
-            COMBO("trtp" id, "Trigger Type" label, oscilloscope_metadata::TRIGGER_TYPE_DFL, osc_trg_type), \
-            COMBO("trin" id, "Trigger Input" label, oscilloscope_metadata::TRIGGER_INPUT_DFL, osc_trg_input), \
-            TRIGGER("trre" id, "Trigger Reset")
+            COMBO("trmo" id, "Trigger Mode" label, "Trg Mode " alias, oscilloscope_metadata::TRIGGER_MODE_DFL, osc_trg_mode), \
+            COMBO("trtp" id, "Trigger Type" label, "Trg Type " alias, oscilloscope_metadata::TRIGGER_TYPE_DFL, osc_trg_type), \
+            COMBO("trin" id, "Trigger Input" label, "Trg In " alias, oscilloscope_metadata::TRIGGER_INPUT_DFL, osc_trg_input), \
+            TRIGGER("trre" id, "Trigger Reset", "Trg reset" alias)
 
         #define CHANNEL_CONTROLS(id, label, alias) \
-            OP_CONTROLS(id, label), \
-            CP_CONTROLS(id, label), \
+            OP_CONTROLS(id, label, alias), \
+            CP_CONTROLS(id, label, alias), \
             HOR_CONTROLS(id, label, alias), \
             VER_CONTROLS(id, label, alias), \
             TRG_CONTROLS(id, label, alias)
