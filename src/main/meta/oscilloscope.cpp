@@ -124,7 +124,7 @@ namespace lsp
             AUDIO_OUTPUT("out_y" id, "Output y" label)
 
         #define COMMON_CONTROLS \
-            CONTROL("sh_sz", "Strobe History Size", U_NONE, oscilloscope_metadata::STROBE_HISTORY), \
+            CONTROL("sh_sz", "Strobe History Size", "Strobe size", U_NONE, oscilloscope_metadata::STROBE_HISTORY), \
             LOG_CONTROL("xyrt", "XY Record Time", "XY time", U_MSEC, oscilloscope_metadata::XY_RECORD_TIME), \
             LOG_CONTROL("maxdots", "Maximum Dots for Plotting", "Max dots", U_NONE, oscilloscope_metadata::MAXDOTS), \
             SWITCH("freeze", "Global Freeze Switch", "Freeze all", 0.0f)
@@ -151,19 +151,19 @@ namespace lsp
             COMBO("swtp" id, "Sweep Type" label, "Sweep " alias, oscilloscope_metadata::SWEEP_TYPE_DFL, sweep_type), \
             LOG_CONTROL("tmdv" id, "Time Division" label, "Time div" alias, U_MSEC, oscilloscope_metadata::TIME_DIVISION), \
             LOG_CONTROL("hzdv" id, "Horizontal Division" label, "Hor div" alias, U_NONE, oscilloscope_metadata::HORIZONTAL_DIVISION), \
-            CONTROL("hzps" id, "Horizontal Position" label, U_PERCENT, oscilloscope_metadata::TIME_POSITION)
+            CONTROL("hzps" id, "Horizontal Position" label, "Hor pos" alias, U_PERCENT, oscilloscope_metadata::TIME_POSITION)
 
         #define VER_CONTROLS(id, label, alias) \
             LOG_CONTROL("vedv" id, "Vertical Division" label, "Vert div" alias, U_NONE, oscilloscope_metadata::VERTICAL_DIVISION), \
-            CONTROL("veps" id, "Vertical Position" label, U_PERCENT, oscilloscope_metadata::VERTICAL_POSITION)
+            CONTROL("veps" id, "Vertical Position" label, "Vert pos" alias, U_PERCENT, oscilloscope_metadata::VERTICAL_POSITION)
 
         #define TRG_CONTROLS(id, label, alias) \
-            CONTROL("trhy" id, "Trigger Hysteresis" label, U_PERCENT, oscilloscope_metadata::TRIGGER_HYSTERESIS), \
-            CONTROL("trlv" id, "Trigger Level" label, U_PERCENT, oscilloscope_metadata::TRIGGER_LEVEL), \
+            CONTROL("trhy" id, "Trigger Hysteresis" label, "Trg hyst" alias, U_PERCENT, oscilloscope_metadata::TRIGGER_HYSTERESIS), \
+            CONTROL("trlv" id, "Trigger Level" label, "Trg lvl" alias, U_PERCENT, oscilloscope_metadata::TRIGGER_LEVEL), \
             LOG_CONTROL("trho" id, "Trigger Hold Time" label, "Hold time" alias, U_SEC, oscilloscope_metadata::TRIGGER_HOLD_TIME), \
-            COMBO("trmo" id, "Trigger Mode" label, "Trg Mode " alias, oscilloscope_metadata::TRIGGER_MODE_DFL, osc_trg_mode), \
-            COMBO("trtp" id, "Trigger Type" label, "Trg Type " alias, oscilloscope_metadata::TRIGGER_TYPE_DFL, osc_trg_type), \
-            COMBO("trin" id, "Trigger Input" label, "Trg In " alias, oscilloscope_metadata::TRIGGER_INPUT_DFL, osc_trg_input), \
+            COMBO("trmo" id, "Trigger Mode" label, "Trg mode" alias, oscilloscope_metadata::TRIGGER_MODE_DFL, osc_trg_mode), \
+            COMBO("trtp" id, "Trigger Type" label, "Trg type" alias, oscilloscope_metadata::TRIGGER_TYPE_DFL, osc_trg_type), \
+            COMBO("trin" id, "Trigger Input" label, "Trg in" alias, oscilloscope_metadata::TRIGGER_INPUT_DFL, osc_trg_input), \
             TRIGGER("trre" id, "Trigger Reset", "Trg reset" alias)
 
         #define CHANNEL_CONTROLS(id, label, alias) \
