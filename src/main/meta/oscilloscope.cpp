@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2024 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2024 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2025 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2025 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-oscilloscope
  * Created on: 3 авг. 2021 г.
@@ -25,7 +25,7 @@
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MAJOR       1
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MINOR       0
-#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       24
+#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       25
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION  \
     LSP_MODULE_VERSION( \
@@ -124,54 +124,54 @@ namespace lsp
             AUDIO_OUTPUT("out_y" id, "Output y" label)
 
         #define COMMON_CONTROLS \
-            CONTROL("sh_sz", "Strobe History Size", U_NONE, oscilloscope_metadata::STROBE_HISTORY), \
-            LOG_CONTROL("xyrt", "XY Record Time", U_MSEC, oscilloscope_metadata::XY_RECORD_TIME), \
-            LOG_CONTROL("maxdots", "Maximum Dots for Plotting", U_NONE, oscilloscope_metadata::MAXDOTS), \
-            SWITCH("freeze", "Global Freeze Switch", 0.0f)
+            CONTROL("sh_sz", "Strobe History Size", "Strobe size", U_NONE, oscilloscope_metadata::STROBE_HISTORY), \
+            LOG_CONTROL("xyrt", "XY Record Time", "XY time", U_MSEC, oscilloscope_metadata::XY_RECORD_TIME), \
+            LOG_CONTROL("maxdots", "Maximum Dots for Plotting", "Max dots", U_NONE, oscilloscope_metadata::MAXDOTS), \
+            SWITCH("freeze", "Global Freeze Switch", "Freeze all", 0.0f)
 
         #define CHANNEL_SELECTOR(osc_channels) \
-            COMBO("osc_cs", "Oscilloscope Channel Selector", 0, osc_channels)
+            COMBO("osc_cs", "Oscilloscope Channel Selector", "Chan selector", 0, osc_channels)
 
         #define CHANNEL_SWITCHES(id, label) \
-            SWITCH("glsw" id, "Global Switch" label, 0.0f), \
-            SWITCH("frz" id, "Freeze Switch" label, 0.0f), \
-            SWITCH("chsl" id, "Solo Switch" label, 0.0f), \
-            SWITCH("chmt" id, "Mute Switch" label, 0.0f)
+            SWITCH("glsw" id, "Global Switch" label, "Global " label, 0.0f), \
+            SWITCH("frz" id, "Freeze Switch" label, "Freeze " label, 0.0f), \
+            SWITCH("chsl" id, "Solo Switch" label, "Solo " label, 0.0f), \
+            SWITCH("chmt" id, "Mute Switch" label, "Mute " label, 0.0f)
 
-        #define OP_CONTROLS(id, label) \
-            COMBO("ovmo" id, "Oversampler Mode" label, oscilloscope_metadata::OSC_OVS_DFL, ovs_mode), \
-            COMBO("scmo" id, "Mode" label, oscilloscope_metadata::MODE_DFL, osc_mode)
+        #define OP_CONTROLS(id, label, alias) \
+            COMBO("ovmo" id, "Oversampler Mode" label, "Oversampling " alias, oscilloscope_metadata::OSC_OVS_DFL, ovs_mode), \
+            COMBO("scmo" id, "Mode" label, "Mode " alias, oscilloscope_metadata::MODE_DFL, osc_mode)
 
-        #define CP_CONTROLS(id, label) \
-            COMBO("sccx" id, "Coupling X" label, oscilloscope_metadata::COUPLING_DFL, osc_coupling), \
-            COMBO("sccy" id, "Coupling Y" label, oscilloscope_metadata::COUPLING_DFL, osc_coupling), \
-            COMBO("scce" id, "Coupling EXT" label, oscilloscope_metadata::COUPLING_DFL, osc_coupling)
+        #define CP_CONTROLS(id, label, alias) \
+            COMBO("sccx" id, "Coupling X" label, "Couple X " alias, oscilloscope_metadata::COUPLING_DFL, osc_coupling), \
+            COMBO("sccy" id, "Coupling Y" label, "Couple Y " alias, oscilloscope_metadata::COUPLING_DFL, osc_coupling), \
+            COMBO("scce" id, "Coupling EXT" label, "Couple Ext " alias, oscilloscope_metadata::COUPLING_DFL, osc_coupling)
 
-        #define HOR_CONTROLS(id, label) \
-            COMBO("swtp" id, "Sweep Type" label, oscilloscope_metadata::SWEEP_TYPE_DFL, sweep_type), \
-            LOG_CONTROL("tmdv" id, "Time Division" label, U_MSEC, oscilloscope_metadata::TIME_DIVISION), \
-            LOG_CONTROL("hzdv" id, "Horizontal Division" label, U_NONE, oscilloscope_metadata::HORIZONTAL_DIVISION), \
-            CONTROL("hzps" id, "Horizontal Position" label, U_PERCENT, oscilloscope_metadata::TIME_POSITION)
+        #define HOR_CONTROLS(id, label, alias) \
+            COMBO("swtp" id, "Sweep Type" label, "Sweep " alias, oscilloscope_metadata::SWEEP_TYPE_DFL, sweep_type), \
+            LOG_CONTROL("tmdv" id, "Time Division" label, "Time div" alias, U_MSEC, oscilloscope_metadata::TIME_DIVISION), \
+            LOG_CONTROL("hzdv" id, "Horizontal Division" label, "Hor div" alias, U_NONE, oscilloscope_metadata::HORIZONTAL_DIVISION), \
+            CONTROL("hzps" id, "Horizontal Position" label, "Hor pos" alias, U_PERCENT, oscilloscope_metadata::TIME_POSITION)
 
-        #define VER_CONTROLS(id, label) \
-            LOG_CONTROL("vedv" id, "Vertical Division" label, U_NONE, oscilloscope_metadata::VERTICAL_DIVISION), \
-            CONTROL("veps" id, "Vertical Position" label, U_PERCENT, oscilloscope_metadata::VERTICAL_POSITION)
+        #define VER_CONTROLS(id, label, alias) \
+            LOG_CONTROL("vedv" id, "Vertical Division" label, "Vert div" alias, U_NONE, oscilloscope_metadata::VERTICAL_DIVISION), \
+            CONTROL("veps" id, "Vertical Position" label, "Vert pos" alias, U_PERCENT, oscilloscope_metadata::VERTICAL_POSITION)
 
-        #define TRG_CONTROLS(id, label) \
-            CONTROL("trhy" id, "Trigger Hysteresis" label, U_PERCENT, oscilloscope_metadata::TRIGGER_HYSTERESIS), \
-            CONTROL("trlv" id, "Trigger Level" label, U_PERCENT, oscilloscope_metadata::TRIGGER_LEVEL), \
-            LOG_CONTROL("trho" id, "Trigger Hold Time" label, U_SEC, oscilloscope_metadata::TRIGGER_HOLD_TIME), \
-            COMBO("trmo" id, "Trigger Mode" label, oscilloscope_metadata::TRIGGER_MODE_DFL, osc_trg_mode), \
-            COMBO("trtp" id, "Trigger Type" label, oscilloscope_metadata::TRIGGER_TYPE_DFL, osc_trg_type), \
-            COMBO("trin" id, "Trigger Input" label, oscilloscope_metadata::TRIGGER_INPUT_DFL, osc_trg_input), \
-            TRIGGER("trre" id, "Trigger Reset")
+        #define TRG_CONTROLS(id, label, alias) \
+            CONTROL("trhy" id, "Trigger Hysteresis" label, "Trg hyst" alias, U_PERCENT, oscilloscope_metadata::TRIGGER_HYSTERESIS), \
+            CONTROL("trlv" id, "Trigger Level" label, "Trg lvl" alias, U_PERCENT, oscilloscope_metadata::TRIGGER_LEVEL), \
+            LOG_CONTROL("trho" id, "Trigger Hold Time" label, "Hold time" alias, U_SEC, oscilloscope_metadata::TRIGGER_HOLD_TIME), \
+            COMBO("trmo" id, "Trigger Mode" label, "Trg mode" alias, oscilloscope_metadata::TRIGGER_MODE_DFL, osc_trg_mode), \
+            COMBO("trtp" id, "Trigger Type" label, "Trg type" alias, oscilloscope_metadata::TRIGGER_TYPE_DFL, osc_trg_type), \
+            COMBO("trin" id, "Trigger Input" label, "Trg in" alias, oscilloscope_metadata::TRIGGER_INPUT_DFL, osc_trg_input), \
+            TRIGGER("trre" id, "Trigger Reset", "Trg reset" alias)
 
-        #define CHANNEL_CONTROLS(id, label) \
-            OP_CONTROLS(id, label), \
-            CP_CONTROLS(id, label), \
-            HOR_CONTROLS(id, label), \
-            VER_CONTROLS(id, label), \
-            TRG_CONTROLS(id, label)
+        #define CHANNEL_CONTROLS(id, label, alias) \
+            OP_CONTROLS(id, label, alias), \
+            CP_CONTROLS(id, label, alias), \
+            HOR_CONTROLS(id, label, alias), \
+            VER_CONTROLS(id, label, alias), \
+            TRG_CONTROLS(id, label, alias)
 
         #define OSC_VISUALOUTS(id, label) \
             STREAM("oscv" id, "Stream buffer" label, 3, 128, 0x8000)
@@ -180,7 +180,7 @@ namespace lsp
         {
             CHANNEL_AUDIO_PORTS("_1", " 1"),
             COMMON_CONTROLS,
-            CHANNEL_CONTROLS("_1", " 1"),
+            CHANNEL_CONTROLS("_1", " 1", " 1"),
             OSC_VISUALOUTS("_1", " 1"),
             PORTS_END
         };
@@ -193,9 +193,9 @@ namespace lsp
             COMMON_CONTROLS,
             CHANNEL_SELECTOR(osc_channels_x2),
 
-            CHANNEL_CONTROLS("", " Global"),
-            CHANNEL_CONTROLS("_1", " 1"),
-            CHANNEL_CONTROLS("_2", " 2"),
+            CHANNEL_CONTROLS("", " Global", " G"),
+            CHANNEL_CONTROLS("_1", " 1", " 1"),
+            CHANNEL_CONTROLS("_2", " 2", " 2"),
 
             CHANNEL_SWITCHES("_1", " 1"),
             CHANNEL_SWITCHES("_2", " 2"),
@@ -216,11 +216,11 @@ namespace lsp
             COMMON_CONTROLS,
             CHANNEL_SELECTOR(osc_channels_x4),
 
-            CHANNEL_CONTROLS("", " Global"),
-            CHANNEL_CONTROLS("_1", " 1"),
-            CHANNEL_CONTROLS("_2", " 2"),
-            CHANNEL_CONTROLS("_3", " 3"),
-            CHANNEL_CONTROLS("_4", " 4"),
+            CHANNEL_CONTROLS("", " Global", " G"),
+            CHANNEL_CONTROLS("_1", " 1", " 1"),
+            CHANNEL_CONTROLS("_2", " 2", " 2"),
+            CHANNEL_CONTROLS("_3", " 3", " 3"),
+            CHANNEL_CONTROLS("_4", " 4", " 4"),
 
             CHANNEL_SWITCHES("_1", " 1"),
             CHANNEL_SWITCHES("_2", " 2"),
