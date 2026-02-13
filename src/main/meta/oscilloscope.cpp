@@ -324,7 +324,7 @@ namespace lsp
             clap_features,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             oscilloscope_x1_ports,
-            "util/oscilloscope/x1.xml",
+            "plugins/util/oscilloscope/x1.xml",
             NULL,
             oscilloscope_x1_port_groups,
             &oscilloscope_bundle
@@ -355,7 +355,7 @@ namespace lsp
             clap_features,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             oscilloscope_x2_ports,
-            "util/oscilloscope/x2.xml",
+            "plugins/util/oscilloscope/x2.xml",
             NULL,
             oscilloscope_x2_port_groups,
             &oscilloscope_bundle
@@ -386,7 +386,7 @@ namespace lsp
             clap_features,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             oscilloscope_x4_ports,
-            "util/oscilloscope/x4.xml",
+            "plugins/util/oscilloscope/x4.xml",
             NULL,
             oscilloscope_x4_port_groups,
             &oscilloscope_bundle
