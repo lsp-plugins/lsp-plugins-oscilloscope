@@ -327,7 +327,8 @@ namespace lsp
             "plugins/util/oscilloscope/x1.xml",
             NULL,
             oscilloscope_x1_port_groups,
-            &oscilloscope_bundle
+            &oscilloscope_bundle,
+            1
         };
         LSP_REGISTER_METADATA(oscilloscope_x1);
 
@@ -358,7 +359,8 @@ namespace lsp
             "plugins/util/oscilloscope/x2.xml",
             NULL,
             oscilloscope_x2_port_groups,
-            &oscilloscope_bundle
+            &oscilloscope_bundle,
+            2
         };
         LSP_REGISTER_METADATA(oscilloscope_x2);
 
@@ -389,7 +391,8 @@ namespace lsp
             "plugins/util/oscilloscope/x4.xml",
             NULL,
             oscilloscope_x4_port_groups,
-            &oscilloscope_bundle
+            &oscilloscope_bundle,
+            3
         };
         LSP_REGISTER_METADATA(oscilloscope_x4);
 
