@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2025 Linux Studio Plugins Project <https://lsp-plug.in/>
- *           (C) 2025 Vladimir Sadovnikov <sadko4u@gmail.com>
+ * Copyright (C) 2026 Linux Studio Plugins Project <https://lsp-plug.in/>
+ *           (C) 2026 Vladimir Sadovnikov <sadko4u@gmail.com>
  *
  * This file is part of lsp-plugins-oscilloscope
  * Created on: 3 авг. 2021 г.
@@ -20,12 +20,13 @@
  */
 
 #include <lsp-plug.in/plug-fw/meta/ports.h>
+#include <lsp-plug.in/plug-fw/meta/registry.h>
 #include <lsp-plug.in/shared/meta/developers.h>
 #include <private/meta/oscilloscope.h>
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MAJOR       1
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MINOR       0
-#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       29
+#define LSP_PLUGINS_OSCILLOSCOPE_VERSION_MICRO       30
 
 #define LSP_PLUGINS_OSCILLOSCOPE_VERSION  \
     LSP_MODULE_VERSION( \
@@ -323,11 +324,13 @@ namespace lsp
             clap_features,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             oscilloscope_x1_ports,
-            "util/oscilloscope/x1.xml",
+            "plugins/util/oscilloscope/x1.xml",
             NULL,
             oscilloscope_x1_port_groups,
-            &oscilloscope_bundle
+            &oscilloscope_bundle,
+            1
         };
+        LSP_REGISTER_METADATA(oscilloscope_x1);
 
         const meta::plugin_t oscilloscope_x2 =
         {
@@ -353,11 +356,13 @@ namespace lsp
             clap_features,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             oscilloscope_x2_ports,
-            "util/oscilloscope/x2.xml",
+            "plugins/util/oscilloscope/x2.xml",
             NULL,
             oscilloscope_x2_port_groups,
-            &oscilloscope_bundle
+            &oscilloscope_bundle,
+            2
         };
+        LSP_REGISTER_METADATA(oscilloscope_x2);
 
         const meta::plugin_t oscilloscope_x4 =
         {
@@ -383,10 +388,13 @@ namespace lsp
             clap_features,
             E_INLINE_DISPLAY | E_DUMP_STATE,
             oscilloscope_x4_ports,
-            "util/oscilloscope/x4.xml",
+            "plugins/util/oscilloscope/x4.xml",
             NULL,
             oscilloscope_x4_port_groups,
-            &oscilloscope_bundle
+            &oscilloscope_bundle,
+            3
         };
+        LSP_REGISTER_METADATA(oscilloscope_x4);
+
     } /* namespace meta */
 } /* namespace lsp */

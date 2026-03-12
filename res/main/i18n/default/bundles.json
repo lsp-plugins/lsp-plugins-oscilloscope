@@ -1,7 +1,12 @@
 {
 	"oscilloscope": {
-		"name": "Oscilloscope",
-		"description": "This plugin implements a simple, but flexible, oscilloscope. Different operating\nmodes are provided. For better analysis of high frequencies, oversampling\noption is available. Additional control ports allow to set up advanced\nconfiguration and analysis."
-	}
+		"description": "This plugin implements a simple, but flexible, oscilloscope. Different operating\nmodes are provided. For better analysis of high frequencies, oversampling\noption is available. Additional control ports allow to set up advanced\nconfiguration and analysis.",
+		"name": "Oscilloscope"
+	},
+    "launcher": {
+        "oscilloscope_x1": "x1",
+        "oscilloscope_x2": "x2",
+        "oscilloscope_x4": "x4"
+    }
 }
 
